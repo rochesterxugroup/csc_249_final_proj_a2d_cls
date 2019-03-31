@@ -13,6 +13,16 @@ A2D dataset: it has 43 valid actor-action labels such as 'baby-climbing',
 We provided a dataloader for processing training or validation sets of A2D dataset for the actor-action classification task. It will read images and annotations in training or validation sets, do processing on images and original annotaions, then return processed images (224x224x3) and its class labels (43-D encoding). For the returned labels, it will have 44 dimension corresponding 44 different classes. If a encoded label is [1, 1, 0, ..., 0] (the first two elements are 1 and the others are 0), it means the image has the first and second classes ("adult-climbing" and "adult-crawling"). 
 We provide another dataloader for processing testing set of A2D dataset, which will only return images without annotation labels. 
 
+## Template
+We provide a template for training, evaluation, and testing for submission. You can finish your code based on the template, and you are free to do any changes or even use your own code . 
+
+### How to use? 
+(1) You need to define your network in network.py
+
+(2) use the defined network and define your loss function and optimizer in train.py.
+
+(3) you can evaluate your model on validation set and generate results on testing set using eval_on_val.py and test_for_submission.py with loading your pre-trained model, respectively. You need to write model loading code.
+
 ## Evaluation Metrics
 We use precision, recall, and F1-score to measure performance of trained models. The descriptions about the three metrics can be found in https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9.
 
