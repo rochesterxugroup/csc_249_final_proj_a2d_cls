@@ -104,7 +104,7 @@ def main(args):
 
     # load pre-trained model
     model = Res152_MLMC(args.emb_size, args.num_cls).to(device)
-    model.load_state_dict(torch.load(os.path.join(args.model_path, 'MLMC_model.ckpt')))
+    model.load_state_dict(torch.load(os.path.join(args.model_path, 'net.ckpt')))
 
     results = np.zeros((data_loader.__len__(), args.num_cls))
     model.eval()
@@ -118,7 +118,7 @@ def main(args):
             output[output >= 0.5] = 1
             output[output < 0.5] = 0
             results[batch_idx, :] = output
-    with open('results.pkl', 'wb') as f:
+    with open('results_netid.pkl', 'wb') as f:
         pickle.dump(results, f)
 
 
