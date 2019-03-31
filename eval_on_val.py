@@ -22,8 +22,11 @@ def main(args):
 
     test_dataset = a2d_dataset.A2DDataset(test_cfg, args.dataset_path)
     data_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=1)
-    model = net(args.emb_size, args.num_cls).to(device)
+    
+    # define load your model here
+    model = #
     model.load_state_dict(torch.load(os.path.join(args.model_path, 'net.ckpt')))
+    
     X = np.zeros((data_loader.__len__(), args.num_cls))
     Y = np.zeros((data_loader.__len__(), args.num_cls))
     print(data_loader.__len__())
