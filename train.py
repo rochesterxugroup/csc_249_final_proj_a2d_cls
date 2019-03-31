@@ -21,9 +21,9 @@ def main(args):
 
     test_dataset = a2d_dataset.A2DDataset(train_cfg, args.dataset_path)
     data_loader = DataLoader(test_dataset, batch_size=4, shuffle=True, num_workers=4) # you can make changes
-    model = net(args.emb_size, args.num_cls).to(device)
 
-    # Define Loss and optimizer
+    # Define model, Loss, and optimizer
+    model = ###
     criterion = ###
     optimizer = ###
 
