@@ -160,7 +160,7 @@ class A2DDataset(Dataset):
         super(A2DDataset, self).__init__()
       
         with open(
-                os.path.join(dataset_path,
+                os.path.join(dataset_path, 'list',
                              config.data_list + '.txt')) as f:
             self.img_list = []
             for line in f:
@@ -370,7 +370,7 @@ class A2DDataset_test(Dataset):
     def __init__(self, config, dataset_path):
         super(A2DDataset_test, self).__init__()
         with open(
-                os.path.join(dataset_path,
+                os.path.join(dataset_path,'list',
                              config.data_list + '.txt')) as f:
             self.img_list = []
             for line in f:
