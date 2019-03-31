@@ -27,4 +27,6 @@ We provide a template for training, evaluation, and testing for submission. You 
 We use precision, recall, and F1-score to measure performance of trained models. The descriptions about the three metrics can be found in https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9.
 
 ## Submission 
-We will evaluate your model on the testing set and the results should be a (NXnum_cls) array containing predictions saved as "results.pkl", where N (1044) refers to testing set size and num_cls (43) is the number of classes, and the elements are 0 or 1. You may follow the template: test.py to do testing. Please submit the results_netid.pkl (please change "netid" with your netid).
+We will evaluate your model on the testing set and the results should be a (NXnum_cls) array containing predictions saved as "results.pkl", where N (1044) refers to testing set size and num_cls (43) is the number of classes, and the elements are 0 or 1. You may follow the template: test.py to do testing. 
+
+Please submit the results_netid.pkl (please change "netid" with your netid) and do not do data shuffle during testing.
