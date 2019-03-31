@@ -125,7 +125,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_path', type=str, default='models/', help='path for saving trained models')
-    parser.add_argument('--dataset_path', type=str, default='/home/cxu-serve/p1/jchen121/dataset/A2D', help='a2d dataset')
+    parser.add_argument('--dataset_path', type=str, default='../A2D', help='a2d dataset')
     parser.add_argument('--num_cls', type=int, default=43)
 
     args = parser.parse_args()
