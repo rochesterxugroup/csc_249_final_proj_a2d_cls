@@ -10,7 +10,7 @@ A2D dataset: it has 43 valid actor-action labels such as 'baby-climbing',
         'ball-crawling'. It consists of 4750 training images, 1209 validation images, and 1044 testing images.  
 
 ## Data Processing
-We provided a dataloader for processing training or validation sets of A2D dataset for the actor-action classification task. It will read images and annotations in training or validation sets, do processing on images and original annotaions, then return processed images (224x224x3) and its class labels (43-D encoding). For the returned labels, it will have 44 dimension corresponding 44 different classes. If a encoded label is [1, 1, 0, ..., 0] (the first two elements are 1 and the others are 0), it means the image has the first and second classes ("adult-climbing" and "adult-crawling"). 
+We provided a dataloader for processing training or validation sets of A2D dataset for the actor-action classification task. It will read images and annotations in training or validation sets, do processing on images and original annotaions, then return processed images (224x224x3) and its class labels (43-D encoding). For the returned labels, it will have 44 dimension corresponding 43 different classes. If a encoded label is [1, 1, 0, ..., 0] (the first two elements are 1 and the others are 0), it means the image has the first and second classes ("adult-climbing" and "adult-crawling"). 
 We provide another dataloader for processing testing set of A2D dataset, which will only return images without annotation labels. 
 
 ## Template
