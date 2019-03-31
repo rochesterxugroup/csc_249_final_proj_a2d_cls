@@ -158,9 +158,7 @@ class A2DDataset(Dataset):
     ])
     def __init__(self, config, dataset_path):
         super(A2DDataset, self).__init__()
-        # dataset_path = '/mnt/disk0/dat/jiechen/dataset/A2D'
-        #os.path.join(dataset_path, 'list/frame_level',
-         #            config.data_list + '_vd_frame_gt.txt')) as f:
+      
         with open(
                 os.path.join('/home/cxu-serve/p1/zli82/dataset/A2D/list/small_a2d_for_249',
                              config.data_list + '.txt')) as f:
@@ -182,17 +180,11 @@ class A2DDataset(Dataset):
     def __getitem__(self, idx):
         vd_frame_idx = self.img_list[idx]
         image_path = os.path.join(self.img_dir, vd_frame_idx + '.png')
-        #image = Image.open(image_path)
         image = cv2.imread(image_path).astype(np.float32)
         gt_load_path = os.path.join(self.gt_dir, vd_frame_idx + '.mat')
         label_orig = h5py.File(gt_load_path)['reS_id'].value
-        # ->(h,w)
         label_orig = np.transpose(label_orig)
-        #u,c = np.unique(label_orig, return_counts=True)
-        #print('i', u,c)
         label = A2DDataset.label_80to43[label_orig]
-        #u,c = np.unique(label, return_counts=True)
-        #print('o', u,c)
 
         # flip
         if hasattr(self.config, 'flip') and self.config.flip:
@@ -241,17 +233,13 @@ class A2DDataset(Dataset):
             transforms.Normalize((0.485, 0.456, 0.406),
                                  (0.229, 0.224, 0.225))])
         image = transform(image)
-        # image tensor shape (c,h,w)
         image = image.contiguous().float()
-        # label tensor shape (h,w)
-        #print(label)
         label = to_cls(label, 43)
         label = torch.from_numpy(label).contiguous().long()
         return image, label
 
 class A2DDataset_test(Dataset):
 
-    #num_class = 43
     num_class_orig = 80
     ignore_label = 255
     background_label = 0
@@ -381,9 +369,6 @@ class A2DDataset_test(Dataset):
     ])
     def __init__(self, config, dataset_path):
         super(A2DDataset_test, self).__init__()
-        # dataset_path = '/mnt/disk0/dat/jiechen/dataset/A2D'
-        #os.path.join(dataset_path, 'list/frame_level',
-         #            config.data_list + '_vd_frame_gt.txt')) as f:
         with open(
                 os.path.join('/home/cxu-serve/p1/zli82/dataset/A2D/list/small_a2d_for_249',
                              config.data_list + '.txt')) as f:
