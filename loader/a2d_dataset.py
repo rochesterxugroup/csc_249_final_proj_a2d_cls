@@ -160,7 +160,7 @@ class A2DDataset(Dataset):
         super(A2DDataset, self).__init__()
       
         with open(
-                os.path.join('/home/cxu-serve/p1/zli82/dataset/A2D/list/small_a2d_for_249',
+                os.path.join(dataset_path,
                              config.data_list + '.txt')) as f:
             self.img_list = []
             for line in f:
@@ -370,7 +370,7 @@ class A2DDataset_test(Dataset):
     def __init__(self, config, dataset_path):
         super(A2DDataset_test, self).__init__()
         with open(
-                os.path.join('/home/cxu-serve/p1/zli82/dataset/A2D/list/small_a2d_for_249',
+                os.path.join(dataset_path,
                              config.data_list + '.txt')) as f:
             self.img_list = []
             for line in f:
@@ -408,7 +408,7 @@ if __name__ == '__main__':
     # val_dataset = A2DDataset(val_cfg)
 
     # load training or validation datasets
-    train_dataset = A2DDataset(train_cfg, '/home/cxu-serve/p1/jchen121/dataset/A2D')
+    train_dataset = A2DDataset(train_cfg, '../A2D')
     dataloader = DataLoader(train_dataset, batch_size=4,
                            shuffle=True, num_workers=4)
     for i, data in enumerate(dataloader):
@@ -416,7 +416,7 @@ if __name__ == '__main__':
         break
 
     # load test datasets
-    test_dataset = A2DDataset_test(test_cfg, '/home/cxu-serve/p1/jchen121/dataset/A2D')
+    test_dataset = A2DDataset_test(test_cfg, '../A2D')
     dataloader = DataLoader(test_dataset, batch_size=1,
                             shuffle=False, num_workers=1)
     for i, data in enumerate(dataloader):
