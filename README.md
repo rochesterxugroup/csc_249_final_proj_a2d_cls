@@ -15,8 +15,3 @@ We use precision, recall, and F1-score to measure performance of trained models.
 
 ## Submission 
 We will evaluate your model on the testing set and the results should be a (NXnum_cls) array containing predictions saved as "results.pkl", where N (1044) refers to testing set size and num_cls (43) is the number of classes, and the elements are 0 or 1. You may follow the test.py to do testing.
-
-## Baseline (NOT RELEASED FOR STUDENTS)
-A simple baseline model is implemented. It uses Res152 to extract image features and then use MLP to make prediction. Since it is a multi-label multi-class problem, the final fc layer will predict num_cls outputs and then use sigmoid function for each output to predict its possibility (whether the class exists).
-
-Training time: each epoch takes around 120s (2mins). After 10 epoches training (< 30 mins), the model can achieve: Precision: 23.8 Recall: 30.5 F1: 25.2 on validation set. 
