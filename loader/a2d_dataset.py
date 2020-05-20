@@ -207,12 +207,12 @@ class A2DDataset(Dataset):
                     image, label = tf.group_random_crop([image, label], target_size)
                     image, label = tf.group_random_pad(
                         [image, label], target_size,
-                        [self.config.input_mean, A2DDataset.background_label])
+                        [self.config.input_mean, A2DDataset.ignore_label])
                 elif self.config.crop_policy == 'center':
                     image, label = tf.group_center_crop([image, label], target_size)
                     image, label = tf.group_concer_pad(
                         [image, label], target_size,
-                        [self.config.input_mean, A2DDataset.background_label])
+                        [self.config.input_mean, A2DDataset.ignore_label])
                 else:
                     ValueError('Unknown crop policy: {}'.format(
                         self.config.crop_policy))
@@ -221,7 +221,7 @@ class A2DDataset(Dataset):
             image, label = tf.group_rotation(
                 [image, label], self.config.rotation,
                 [cv2.INTER_LINEAR, cv2.INTER_NEAREST],
-                [self.config.input_mean, A2DDataset.background_label])
+                [self.config.input_mean, A2DDataset.ignore_label])
         # blur
         if hasattr(self.config,
                    'blur') and self.config.blur and random.random() < 0.5:
